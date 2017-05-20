@@ -19,11 +19,10 @@ class PinterestItem(scrapy.Item):
     dominant_color = scrapy.Field()
     id = scrapy.Field()
     image_urls = scrapy.Field()
+    images = scrapy.Field()
     like_count = scrapy.Field()
     link = scrapy.Field()
     repin_count = scrapy.Field()
     type = scrapy.Field()
     origin_pin_id = scrapy.Field()
-    image_paths = scrapy.Field()
-    result_filename = scrapy.Field()
     pass

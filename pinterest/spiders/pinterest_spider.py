@@ -5,6 +5,7 @@ from pinterest.items import PinterestItem
 
 import json
 
+
 class PinterestSpiderSpider(scrapy.Spider):
     name = "pinterest_spider"
     allowed_domains = ["pinterest.com"]
@@ -42,11 +43,11 @@ class PinterestSpiderSpider(scrapy.Spider):
             scraped_item['domain'] = i['domain']
             scraped_item['dominant_color'] = i['dominant_color']
             scraped_item['id'] = i['id']
-            scraped_item['image_urls'] = i['images']['orig']['url']
+            scraped_item['image_urls'] = [ i['images']['orig']['url'] ]
             scraped_item['like_count'] = i['like_count']
             scraped_item['link'] = i['link']
             scraped_item['repin_count'] = i['repin_count']
             scraped_item['type'] = i['type']
             scraped_item['origin_pin_id'] =jdata['client_context']['visible_url'].replace('/pin/', '').replace('/', '')
-        pass
+            yield scraped_item
 
