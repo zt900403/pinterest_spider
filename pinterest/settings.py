@@ -25,15 +25,18 @@ IMAGES_STORE = "./Artwork"  # 图片储存路径,为当前项目目录下的图�
 FILES_STORE = "./files"  # 文件储存路径
 FILES_EXPIRES = 90  # 设置文件失效的时间
 IMAGES_EXPIRES = 30  # 设置图片失效的时间
-ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1}
+
 IMAGES_THUMBS = {
     'small': (50, 50),
     'big': (270, 270),
 }
 
 ITEM_PIPELINES = {
-    'pinterest.pipelines.PinterestPipeline': 300,
+    'scrapy.pipelines.images.ImagesPipeline': 1
 }
+#IMAGES_URLS_FIELD = 'images_url'
+#IMAGES_RESULT_FIELD = 'result_filename'
+#     'pinterest.pipelines.ImagesPipeline': 300
 # 设置缩略图大小，当你使用这个特性时，图片管道将使用下面的格式来创建各个特定尺寸的缩略图: <IMAGES_STORE>/thumbs/<size_name>/<image_id>.jpg
 
 

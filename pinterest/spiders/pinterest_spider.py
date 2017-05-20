@@ -37,12 +37,12 @@ class PinterestSpiderSpider(scrapy.Spider):
         for i in items:
             scraped_item = PinterestItem()
             scraped_item['comment_count'] = i['comment_count']
-            scraped_item['create_at'] = i['create_at']
+            scraped_item['created_at'] = i['created_at']
             scraped_item['description'] = i['description']
             scraped_item['domain'] = i['domain']
             scraped_item['dominant_color'] = i['dominant_color']
             scraped_item['id'] = i['id']
-            scraped_item['images_url'] = i['images_url']
+            scraped_item['image_urls'] = i['images']['orig']['url']
             scraped_item['like_count'] = i['like_count']
             scraped_item['link'] = i['link']
             scraped_item['repin_count'] = i['repin_count']

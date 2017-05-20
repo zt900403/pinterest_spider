@@ -10,7 +10,7 @@ class PinterestPipeline(object):
     def get_media_requests(self, item, info):
         # for image_url in item._values['artwork_imgurl']:
 
-        yield scrapy.Request(item['images_url'])
+        yield scrapy.Request(item['image_urls'])
 
     def item_completed(self, results, item, info):
         image_paths = [x['path'] for ok, x in results if ok]
