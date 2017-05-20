@@ -11,4 +11,18 @@ import scrapy
 class PinterestItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    comment_count = scrapy.Field()
+    create_at = scrapy.Field()
+    description = scrapy.Field()
+    domain = scrapy.Field()
+    dominant_color = scrapy.Field()
+    id = scrapy.Field()
+    images_url = scrapy.Field()
+    like_count = scrapy.Field()
+    link = scrapy.Field()
+    repin_count = scrapy.Field()
+    type = scrapy.Field()
+    origin_pin_id = scrapy.Field()
+    image_paths = scrapy.Field()
+
     pass
