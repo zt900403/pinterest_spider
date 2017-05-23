@@ -25,4 +25,5 @@ class PinterestItem(scrapy.Item):
     repin_count = scrapy.Field()
     type = scrapy.Field()
     origin_pin_id = scrapy.Field()
-    pass
+    tags = scrapy.Field()
+
