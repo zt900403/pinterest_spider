@@ -26,4 +26,5 @@ class PinterestItem(scrapy.Item):
     type = scrapy.Field()
     origin_pin_id = scrapy.Field()
     tags = scrapy.Field()
-
+    width = scrapy.Field()
+    height = scrapy.Field()
