@@ -104,3 +104,6 @@ ENV/
 .idea
 .vscode
 Artwork/
+tags.txt
+pinterest/spiders/crawls/somespider-1/requests.queue/
+pinterest/spiders/tags.txt
