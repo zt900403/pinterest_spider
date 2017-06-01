@@ -12,7 +12,7 @@ import json
 class PinterestSpiderSpider(scrapy.Spider):
     name = "pinterest_spider"
     allowed_domains = ["pinterest.com"]
-    start_urls = ['https://www.pinterest.com/pin/184225440990815924/']
+    start_urls = ['https://www.pinterest.com/pin/431923420492871843/']
 
     headers = {
         'accept': "application/json, text/javascript, */*; q=0.01",
@@ -55,9 +55,8 @@ class PinterestSpiderSpider(scrapy.Spider):
             scraped_item['type'] = item['type']
             pinID = item['id']
             scraped_item['tags'] = item['pin_join']['visual_annotation']
-
             a = tags_statistic_top3(item['pin_join']['visual_annotation'])
-
+            scraped_item['top_tag'] = a[0]
             f = open('tags.txt', 'a')
             f.write(a[0] + ' ' + a[1] + ' ' + a[2]+'\n')
             f.close()

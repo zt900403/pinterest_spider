@@ -32,8 +32,12 @@ IMAGES_THUMBS = {
 }
 
 ITEM_PIPELINES = {
-    'scrapy.pipelines.images.ImagesPipeline': 1
+    #'scrapy.pipelines.images.ImagesPipeline': 1
+    #'scrapy.contrib.pipeline.images.ImagesPipeline'
+    #'pinterest.pipelines.ImageDownloadPipeline': 1
+    'pinterest.pipelines.MyImagesPipeline': 1
 }
+
 
 #     'pinterest.pipelines.ImagesPipeline': 300
 # 设置缩略图大小，当你使用这个特性时，图片管道将使用下面的格式来创建各个特定尺寸的缩略图: <IMAGES_STORE>/thumbs/<size_name>/<image_id>.jpg

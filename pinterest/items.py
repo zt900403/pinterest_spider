@@ -28,3 +28,6 @@ class PinterestItem(scrapy.Item):
     tags = scrapy.Field()
     width = scrapy.Field()
     height = scrapy.Field()
+    item = scrapy.Field()
+    top_tag = scrapy.Field()
+    image_paths = scrapy.Field()
