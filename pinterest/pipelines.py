@@ -17,13 +17,13 @@ class MyImagesPipeline(ImagesPipeline):
     # save pic with default pipeline
     # move pic to classified folder.
     def get_media_requests(self, item, info):
-        itemtag = item["tags"][0].split()[0]
+
         for img_url in item['image_urls']:
-            yield scrapy.Request(img_url, meta={'itemtag': itemtag})
+            yield scrapy.Request(img_url)
 
     def item_completed(self, results, item, info):
         image_ori_paths = [x['path'] for ok, x in results if ok]
-        imgFolder = "D:/Artwork/full/" + item["tags"][0].split()[0] + '/'  # 下载图片的保存路径
+        imgFolder = "D:/Artwork/full/" + item["top_tag"] + '/'  # 下载图片的保存路径
         if not os.path.isdir(imgFolder):
             os.makedirs(imgFolder)
         origin = sys.path[0] + '/Artwork/' + image_ori_paths[0]
@@ -59,7 +59,7 @@ class ImageDownloadPipelineSlow(object):
     # deprecated,save pics
     def process_item(self, item, spider):
         # if 'image_urls' in item:  # 如何‘图片地址’在项目中
-        imgPath = "D:/Artwork/full/" + item["tags"][0].split()[0] + '/'# 下载图片的保存路径
+        imgPath = "D:/Artwork/full/" + item["top_tag"].split()[0] + '/'# 下载图片的保存路径
         if not os.path.isdir(imgPath):
             os.makedirs(imgPath)
         for url in item["image_urls"]:

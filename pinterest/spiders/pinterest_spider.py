@@ -68,7 +68,7 @@ class PinterestSpiderSpider(scrapy.Spider):
 
 
 def tags_statistic_top3(tags):
-    excepted_word = ["to", "the", "a", "on", "of", "and", "with", "for", "st", "or", "have", "has", "had"]
+    excepted_word = ["to", "the", "a", "on", "of", "and", "with", "for", "st", "or", "have", "has", "had", "i", "in", "is", "i", "my", "me", "so" ]
     if tags.__len__() <= 0:
         return []
     else:
