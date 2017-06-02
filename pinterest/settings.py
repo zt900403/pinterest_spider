@@ -21,7 +21,8 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:45.0) Gecko/20100101 Firefo
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-IMAGES_STORE = "./Artwork"  # 图片储存路径,为当前项目目录下的图片文件夹
+FULL_PIC_STORE = 'D:\Artwork/full/'
+IMAGES_STORE = "./Artwork"  # 图片临时储存路径,为当前项目目录下的图片文件夹
 FILES_STORE = "./files"  # 文件储存路径
 FILES_EXPIRES = 90  # 设置文件失效的时间
 IMAGES_EXPIRES = 30  # 设置图片失效的时间
@@ -35,13 +36,17 @@ ITEM_PIPELINES = {
     #'scrapy.pipelines.images.ImagesPipeline': 1
     #'scrapy.contrib.pipeline.images.ImagesPipeline'
     #'pinterest.pipelines.ImageDownloadPipeline': 1
-    'pinterest.pipelines.MyImagesPipeline': 1
+    'pinterest.pipelines.MyImagesPipeline': 300,
+    'pinterest.pipelines.MongoPipeline': 800
 }
 
 
 #     'pinterest.pipelines.ImagesPipeline': 300
 # 设置缩略图大小，当你使用这个特性时，图片管道将使用下面的格式来创建各个特定尺寸的缩略图: <IMAGES_STORE>/thumbs/<size_name>/<image_id>.jpg
-
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "test"
+MONGODB_COLLECTION = "Artwork_info"
 
 IMAGES_MIN_HEIGHT = 110  # 过滤小图片
 IMAGES_MIN_WIDTH = 110    # 过滤小图片
