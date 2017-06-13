@@ -7,8 +7,6 @@
 
 import scrapy
 
-
-
 class PinterestItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
@@ -28,3 +26,6 @@ class PinterestItem(scrapy.Item):
     tags = scrapy.Field()
     width = scrapy.Field()
     height = scrapy.Field()
+    item = scrapy.Field()
+    top_tag = scrapy.Field()
+    image_paths = scrapy.Field()
