@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
+.00# -*- coding: utf-8 -*-
 
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-import os,sys
+import os, sys
 import urllib.request
 from scrapy.exceptions import DropItem
 import scrapy
@@ -50,6 +50,7 @@ class MyImagesPipeline(ImagesPipeline):
     def item_completed(self, results, item, info):
         image_ori_paths = [x['path'] for ok, x in results if ok]
         image_filename = image_ori_paths[0].split('/')[-1]
+
         imgFolder = settings['FULL_PIC_STORE'] + image_filename[0:2] + '/' + image_filename[2:4] + '/' + image_filename[4:6] + '/'  # 下载图片的保存路径
         if not os.path.isdir(imgFolder):
             os.makedirs(imgFolder)
@@ -61,6 +62,20 @@ class MyImagesPipeline(ImagesPipeline):
             if os.path.isfile(origin):
                 shutil.move(origin, new_classified_path)
                 item['image_paths'] = new_classified_path
+
+        old_thumb_folder = settings['IMAGES_STORE'] + '/thumbs/thumbs/'
+        new_thumb_folder = settings['THUMB_PIC_STORE'] + image_filename[0:2] + '/' + image_filename[2:4] + '/' + image_filename[4:6] + '/'
+        old_thumb_path = old_thumb_folder + image_filename
+        new_thumb_path = new_thumb_folder + image_filename
+
+        if not os.path.isdir(new_thumb_path):
+            os.makedirs(new_thumb_path)
+        if not old_thumb_path:
+            raise DropItem("Item contains no images")
+        else:
+            if os.path.isfile(old_thumb_path):
+                shutil.move(old_thumb_path, new_thumb_path)
+                item['image_thumbs_paths'] = new_thumb_path
         return item
 
 
@@ -91,7 +106,7 @@ class ImageDownloadPipelineSlow(object):
     # deprecated,save pics
     def process_item(self, item, spider):
         # if 'image_urls' in item:  # 如何‘图片地址’在项目中
-        imgPath = "D:/Artwork/full/" + item["top_tag"].split()[0] + '/'# 下载图片的保存路径
+        imgPath = "./Artwork/full/" + item["top_tag"].split()[0] + '/'# 下载图片的保存路径
         if not os.path.isdir(imgPath):
             os.makedirs(imgPath)
         for url in item["image_urls"]:
