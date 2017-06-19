@@ -21,15 +21,15 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:45.0) Gecko/20100101 Firefo
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-FULL_PIC_STORE = 'D:\Artwork/full/'
+FULL_PIC_STORE = './Artwork/full/'
+THUMB_PIC_STORE = './Artwork/thumbs/'
 IMAGES_STORE = "./Artwork"  # 图片临时储存路径,为当前项目目录下的图片文件夹
 FILES_STORE = "./files"  # 文件储存路径
 FILES_EXPIRES = 90  # 设置文件失效的时间
 IMAGES_EXPIRES = 30  # 设置图片失效的时间
 
 IMAGES_THUMBS = {
-    'small': (50, 50),
-    'big': (270, 270),
+    'thumbs': (236, 1000)
 }
 
 ITEM_PIPELINES = {
